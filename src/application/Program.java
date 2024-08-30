@@ -33,16 +33,18 @@ public class Program {
 		
 		System.out.print("Entre com o numero de parcelas: ");
 		int months = sc.nextInt();
-
-		Contract contract = new Contract(number, LocalDate.parse(strDate, fmt), totalValue);
+	
 		
+		Contract contract = new Contract(number, LocalDate.parse(strDate, fmt), totalValue);
 		ContractService service = new ContractService(new PayPalService());
 		service.processContract(contract, months);
+		
 		
 		System.out.println("Parcelas: ");
 		for (int i = 0; i < months; i++) {
 			System.out.println(contract.getInstallment().get(i));
 		}
+		
 		
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter("c:\\temp\\installments.txt", true))) {
 			bw.write("-------Parcelas-------");
