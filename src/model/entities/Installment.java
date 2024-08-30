@@ -29,6 +29,6 @@ public class Installment {
 	}
 	
 	public String toString() {
-		return this.dueDate + " - " + this.amount;
+		return this.dueDate.format(fmt) + " - " + this.amount;
 	}
 }
